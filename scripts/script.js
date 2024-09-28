@@ -84,7 +84,7 @@ $(document).ready(function() {
 
     // Next images
     $('#nextButton').click(function() {
-        imageIndex = (imageIndex + 1) % images.length;
+        imageIndex = (imageIndex + 1) % images.length; // % to allow it to recycle
         image.attr('src', images[imageIndex]);
     });
 
