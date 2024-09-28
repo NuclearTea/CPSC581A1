@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Camera Crosshair Web App</title>
-    <!-- Link to CSS Files -->
     <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="image-container">
-            <img id="mainImage" src="images/HCI581A11.png" alt="Image to capture">
-            <div class="crosshair"></div>
+        <div class="main-section">
+            <div class="image-container">
+                <img id="mainImage" src="images/HCI581A11.png" alt="Image to capture">
+                <div class="crosshair"></div>
+            </div>
+            <button id="nextButton" class="next-button">Next</button>
         </div>
-        <button id="nextButton">Next</button>
-        
         <div class="info-panel">
-            <div id="timeElapsed">Time Elapsed: 0:00</div>
-            <div id="liveSnapshot">
-                <p>Live Snapshot Preview:</p>
+            <div id="timeElapsed" class="info-item">Time Elapsed: 0:00</div>
+            <div id="liveSnapshot" class="info-item">
+                <p class="info-title">Live Snapshot Preview:</p>
                 <canvas id="liveCanvas" width="100" height="100"></canvas>
             </div>
-            <div id="lastSnapshot">
-                <p>Last Picture Taken:</p>
+            <div id="lastSnapshot" class="info-item">
+                <p class="info-title">Last Picture Taken:</p>
                 <canvas id="snapshotCanvas" width="100" height="100"></canvas>
             </div>
         </div>
     </div>
 
-    <!-- jQuery Library -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Link to JavaScript File -->
     <script src="scripts/script.js"></script>
 </body>
 </html>

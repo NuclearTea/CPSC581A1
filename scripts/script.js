@@ -1,5 +1,3 @@
-// script.js
-
 $(document).ready(function() {
     const crosshair = $('.crosshair');
     const image = $('#mainImage');
@@ -9,7 +7,7 @@ $(document).ready(function() {
     const snapshotCtx = snapshotCanvas.getContext('2d');
     let startTime = Date.now();
 
-    // Images in the sequence
+    // Use loop??
     const images = [
         'images/HCI581A11.png',
         'images/HCI581A12.png'
@@ -17,7 +15,7 @@ $(document).ready(function() {
 
     let imageIndex = 0;
 
-    // Set the initial image
+    // initial image
     image.attr('src', images[imageIndex]);
 
     // Update crosshair position to follow the mouse
@@ -39,11 +37,11 @@ $(document).ready(function() {
         let displayedWidth = image.width();
         let displayedHeight = image.height();
 
-        // Actual image dimensions (1600x1600)
+        // actual hardcoded image dimensions
         let actualWidth = 1600;
         let actualHeight = 1600;
 
-        // Calculate scale factor
+        // scale factor
         let scaleX = actualWidth / displayedWidth;
         let scaleY = actualHeight / displayedHeight;
 
@@ -55,43 +53,42 @@ $(document).ready(function() {
         liveCanvas.width = crosshair.width();
         liveCanvas.height = crosshair.height();
 
-        // Clear the live canvas before drawing
+        // Clears the live canvas before drawing
         liveCtx.clearRect(0, 0, liveCanvas.width, liveCanvas.height);
 
-        // Draw the live preview of the image in the live canvas
+        // Draw the live preview
         liveCtx.drawImage(
             image[0],
-            sourceX, // Source X (scaled to the actual image size)
-            sourceY, // Source Y (scaled to the actual image size)
-            crosshair.width() * scaleX, // Source Width (scaled)
-            crosshair.height() * scaleY, // Source Height (scaled)
-            0, // Destination X (canvas)
-            0, // Destination Y (canvas)
-            liveCanvas.width, // Destination Width (canvas)
-            liveCanvas.height // Destination Height (canvas)
+            sourceX,
+            sourceY,
+            crosshair.width() * scaleX,
+            crosshair.height() * scaleY,
+            0, 
+            0, 
+            liveCanvas.width,
+            liveCanvas.height 
         );
     });
 
-    // Capture the portion of the image when clicking inside the container
+    // Capture the portion of the image inside the crosshair
     $('.image-container').click(function() {
-        // Set snapshot canvas dimensions to match the crosshair
         snapshotCanvas.width = crosshair.width();
         snapshotCanvas.height = crosshair.height();
 
-        // Clear the snapshot canvas before drawing
+        // Clear snapshot canvas before drawing
         snapshotCtx.clearRect(0, 0, snapshotCanvas.width, snapshotCanvas.height);
 
-        // Copy the current live canvas to the snapshot canvas
+        // Copy live canvas to snapshot canvas
         snapshotCtx.drawImage(liveCanvas, 0, 0);
     });
 
-    // Move to the next image in the sequence
+    // Next images
     $('#nextButton').click(function() {
         imageIndex = (imageIndex + 1) % images.length;
         image.attr('src', images[imageIndex]);
     });
 
-    // Timer to show elapsed time
+    // Timer
     function updateTimeElapsed() {
         let currentTime = Date.now();
         let elapsedTime = Math.floor((currentTime - startTime) / 1000);
