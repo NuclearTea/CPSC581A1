@@ -5,7 +5,8 @@ $(document).ready(function () {
   const liveCtx = liveCanvas.getContext("2d");
   const snapshotCanvas = $("#snapshotCanvas")[0];
   const snapshotCtx = snapshotCanvas.getContext("2d");
-  let startTime = Date.now();
+  const initalTimeLeft = 30;
+  let timeLeft = initalTimeLeft;
 
   const sanpshotsTaken = [];
   const galleryImages = $("#galleryImages");
@@ -105,18 +106,20 @@ $(document).ready(function () {
 
   // Timer
   function updateTimeElapsed() {
-    let currentTime = Date.now();
-    let elapsedTime = Math.floor((currentTime - startTime) / 1000);
-    let minutes = Math.floor(elapsedTime / 60);
-    let seconds = elapsedTime % 60;
-    $("#timeElapsed").text(
-      `Time Elapsed: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`
-    );
+    timeLeft--;
+    if (timeLeft <= 0) {
+      alert("Time's up!");
+      downloadImages();
+      timeLeft = initalTimeLeft;
+      location.reload(true);
+      return;
+    }
+    $("#timeElapsed").text(`Time Left: ${timeLeft} seconds`);
   }
 
   setInterval(updateTimeElapsed, 1000);
 
-  $("#downloadAll").click(function () {
+  const downloadImages = () => {
     if (sanpshotsTaken.length === 0) {
       alert("No images to download");
       return;
@@ -135,7 +138,7 @@ $(document).ready(function () {
       link.download = "images.zip";
       link.click();
     });
-  });
+  };
 });
 
 // Function to convert Base64 to binary
