@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Camera Crosshair Web App</title>
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="container">
-        <div class="main-section">
-            <div class="image-container">
-                <img id="mainImage" src="images/HCI581A11.png" alt="Image to capture">
-                <div class="crosshair"></div>
-            </div>
-            <button id="nextButton" class="next-button">Next</button>
+      <div class="main-section">
+        <div class="image-container">
+          <img
+            id="mainImage"
+            src="images/HCI581A11.png"
+            alt="Image to capture"
+          />
+          <div class="crosshair"></div>
         </div>
-        <div class="info-panel">
-            <div id="timeElapsed" class="info-item">Time Elapsed: 0:00</div>
-            <div id="liveSnapshot" class="info-item">
-                <p class="info-title">Live Snapshot Preview:</p>
-                <canvas id="liveCanvas" width="100" height="100"></canvas>
-            </div>
-            <div id="lastSnapshot" class="info-item">
-                <p class="info-title">Last Picture Taken:</p>
-                <canvas id="snapshotCanvas" width="100" height="100"></canvas>
-            </div>
+
+        <div class="buttons">
+          <button id="nextButton" class="next-button">Next</button>
+          <button id="downloadAll" class="download-button">Download All</button>
         </div>
+      </div>
+      <div class="info-panel">
+        <div id="timeElapsed" class="info-item">Time Elapsed: 0:00</div>
+        <div id="liveSnapshot" class="info-item">
+          <p class="info-title">Live Snapshot Preview:</p>
+          <canvas id="liveCanvas" width="100" height="100"></canvas>
+        </div>
+        <div id="lastSnapshot" class="info-item">
+          <p class="info-title">Last Picture Taken:</p>
+          <canvas id="snapshotCanvas" width="100" height="100"></canvas>
+        </div>
+      </div>
+      <div id="gallery" class="info-panel">
+        <div class="info-item">Gallery:</div>
+        <div id="galleryImages"></div>
+      </div>
     </div>
 
+    <script src="./packages/JSzip/jszip.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="scripts/script.js"></script>
-</body>
+    <script src="scripts/script.js" defer></script>
+  </body>
 </html>
-
