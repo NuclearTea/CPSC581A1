@@ -11,7 +11,12 @@ $(document).ready(function () {
   const galleryImages = $("#galleryImages");
 
   // Use loop??
-  const images = ["images/HCI581A11.png", "images/HCI581A12.png"];
+  const images = [
+    "images/HCI581A11.png",
+    "images/HCI581A12.png",
+    "images/HCI581A13clip.png",
+    "images/HCI581A14clip.png",
+  ];
 
   let imageIndex = 0;
 
